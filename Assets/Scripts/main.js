@@ -1,3 +1,11 @@
+// For details see: 
+// http://groups.google.com/group/requirejs/browse_thread/thread/e7532b7e3013bc62/1e5ca8a89b276de6?show_docid=1e5ca8a89b276de6
+require.config({ 
+	paths : { 
+		'jquery' : 'Utils/jquery' 
+	} 
+}); 
+  
 /*
 	Instead of using define() to wrap our code, in this (our 'main' file) we use require(). 
 	
@@ -7,7 +15,7 @@
 */
 require(["App/people"], function(iCanCallThisAnythingILike) {
 
-	// The argument passed through is the function we defined inside App/people.js
-	console.log(iCanCallThisAnythingILike.list);
+	// The argument passed through is the returned value from the function definition we defined inside App/people.js
+	console.log(iCanCallThisAnythingILike.list, iCanCallThisAnythingILike.scripts);
 	
 });

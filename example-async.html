@@ -1,0 +1,26 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+   <meta charset="utf-8">
+	<title>Require Js</title>
+</head>
+<body>
+	<h1>RequireJS async plugin</h1>
+	<p>This example loads both Google Maps and a twitter feed (via its JSONP service - <strong>check console for returned feed data</strong>)</p>
+	<p>
+        Google Maps loads many JS files asynchronously, so listening just to the first script load isn't enough to check if it is ready to be used, 
+        <br>another problem is that the regular gmaps script uses document.write, 
+        <br>so we need to pass a `callback` parameter to make it not use `document.write` and wait for the callback call.
+    </p>
+    <p>
+        [<a href="http://code.google.com/apis/maps/documentation/javascript/basics.html#Async">More info</a>]
+    </p>
+    <div id="map-canvas" style="width:400px; height:300px; border:1px solid #ccc; background-color:#f5f5f5"></div>
+	
+	<!-- 
+		data-main: defines the main script folder where all other scripts are loaded relative to.
+		we have specified 'google' to be the script to be loaded initially when DOM is ready.
+	-->
+   <script data-main="Assets/Scripts/example-async" src="Assets/Scripts/Require.min.js"></script>
+</body>
+</html>

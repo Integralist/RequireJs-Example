@@ -1,0 +1,23 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+   <meta charset="utf-8">
+	<title>Require Js</title>
+	<style>
+		strong {
+			color: #c00;
+		}
+	</style>
+</head>
+<body>
+	<h1>RequireJS lazy-loading (not *really* lazy-loading)</h1>
+	<p>Instead of loading all modules on page load (within the main bootstrap script) you can use require('string-module') within a module to lazy-load more modules.</p>
+	<p>The build script will still be able to pick up these other modules - <strong>but remember that although 'during development' you may be lazy loading the scripts, the build script is creating a single file with all your modules included so you aren't *really* lazy-loading once you deploy via the build script</strong>.</p>
+	
+	<!-- 
+		data-main: defines the main script folder where all other scripts are loaded relative to.
+		we have specified 'google' to be the script to be loaded initially when DOM is ready.
+	-->
+   <script data-main="Assets/Scripts/example-lazyload" src="Assets/Scripts/Require.min.js"></script>
+</body>
+</html>

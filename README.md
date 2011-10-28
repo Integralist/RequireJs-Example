@@ -1,9 +1,17 @@
-Project Template
+[Integralist](http://www.integralist.co.uk/) - RequireJs/AMD
 ================================
 
 Description
 -----------
 
 Basic RequireJs Example with code comments to explain how everything works.
+See a post related to this repo: http://integralist.co.uk/post/11705798780/beginners-guide-to-amd-and-requirejs
 
-Taken and modified from this [ThinkVitamin article](http://thinkvitamin.com/code/javascript/organize-your-code-with-requirejs/)
+
+Update
+-----------
+
+Have started adding more examples (like plugins) to show how they work.
+
+* Async Plugin (helps with loading 3rd party services such as Google Maps and JSONP services - e.g. Twitter feed)
+* Lazy-Loading (although *not really* when you're deploy via a build script as all modules are concatenated into single script!)

@@ -14,4 +14,5 @@ Update
 Have started adding more examples (like plugins) to show how they work.
 
 * Async Plugin (helps with loading 3rd party services such as Google Maps and JSONP services - e.g. Twitter feed)
+* Template Plugin (uses the same template engine as found in _underscore.js)
 * Lazy-Loading (although *not really* when you're deploy via a build script as all modules are concatenated into single script!)

@@ -17,8 +17,9 @@
     dir: '../../../project-build',
     // if you set relative paths then do them relative to the baseUrl
     paths: {
-        'jquery': 'Utils/jquery',
-        async: 'Utils/async'
+        jquery: 'Utils/jquery',
+        async: 'Plugins/async',
+        tpl: 'Plugins/tpl'
     },
     modules: [
         {
@@ -33,6 +34,9 @@
         },
         {
             name: 'example-lazyload'
+        },
+        {
+            name: 'example-template'
         }
     ]
 })

@@ -1,6 +1,6 @@
 require.config({ 
-	paths : { 
-		async : 'Utils/async'
+	paths: { 
+		async: 'Plugins/async'
 	} 
 }); 
   

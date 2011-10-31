@@ -13,7 +13,7 @@ require.config({
 	and a function which will be executed when those dependencies are resolved. 
 	However this code is not stored as a named module, as its purpose is to be run immediately.
 */
-require(["App/people"], function(iCanCallThisAnythingILike) {
+require(['App/people'], function(iCanCallThisAnythingILike) {
 
 	// The argument passed through is the returned value from the function definition we defined inside App/people.js
 	console.log(iCanCallThisAnythingILike.list, iCanCallThisAnythingILike.scripts);

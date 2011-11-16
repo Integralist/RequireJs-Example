@@ -34,5 +34,12 @@ require(['async!http://maps.google.com/maps/api/js?sensor=false!callback', 'Util
 // I had to load twitter via a separate require() otherwise it wouldn't load
 
 require(['async!http://twitter.com/statuses/user_timeline/Integralist.json?callback'], function(feed) {
-	console.log(feed);
+	console.log('feed: ', feed);
 });
+
+// Try not using async! plugin (apparently should work according to RequireJs API)
+/*
+require(['http://twitter.com/statuses/user_timeline/Integralist.json?callback=define'], function(feed) {
+	console.log('feed (non-plugin): ', feed);
+});
+*/

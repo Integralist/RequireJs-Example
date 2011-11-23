@@ -1,0 +1,29 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+   <meta charset="utf-8">
+	<title>Require Js</title>
+</head>
+<body>
+	<h1>RequireJs and jQuery Plugins</h1>
+	
+	<div id="carousel">
+		<ul>
+			<li><img src="Assets/Images/1.jpg"></li>
+			<li><img src="Assets/Images/2.jpg"></li>
+			<li><img src="Assets/Images/3.jpg"></li>
+			<li><img src="Assets/Images/4.jpg"></li>
+			<li><img src="Assets/Images/5.jpg"></li>
+			<li><img src="Assets/Images/6.jpg"></li>
+			<li><img src="Assets/Images/7.jpg"></li>
+			<li><img src="Assets/Images/8.jpg"></li>
+		</ul>
+	</div>
+	
+	<!-- 
+		data-main: defines the main script folder where all other scripts are loaded relative to.
+		we have specified 'example-jquery-plugins' to be the script to be loaded initially when DOM is ready.
+	-->
+   <script data-main="Assets/Scripts/example-jquery-plugins" src="Assets/Scripts/Require.min.js"></script>
+</body>
+</html>

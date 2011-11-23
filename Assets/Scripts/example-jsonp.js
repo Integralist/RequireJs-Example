@@ -11,3 +11,7 @@ require(['jsonp!http://twitter.com/statuses/user_timeline/Integralist.json?callb
 	console.log('feed2: ', feed2);
 	console.log('feed3: ', feed3);
 });
+
+require(['jsonp!JSON-P.php?callback=rjs_global'], function(feed4) {
+	console.log('feed4: ', feed4);
+});

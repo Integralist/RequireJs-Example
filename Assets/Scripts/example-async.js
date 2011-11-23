@@ -12,34 +12,41 @@ require.config({
 	However this code is not stored as a named module, as its purpose is to be run immediately.
 */
 
-require(['async!http://maps.google.com/maps/api/js?sensor=false!callback', 'Utils/random'], function(empty, rand) {
+// you can use a "!callbackName" at the end of the URL 
+// to specify name of parameter that expects callback function name
+// the default value is "!callback" if not present.
+require(['async!http://twitter.com/statuses/user_timeline/millermedeiros.json', 'async!http://maps.google.com/maps/api/js?sensor=false', 'Utils/random'], function(feed, empty, rand){
 
-	// async is undefined but still loads the random.js utility script
 	console.log(rand);
-	
-	//Google maps is available and all components are ready to use
-    var mapDiv = document.getElementById('map-canvas'),
-    	map = new google.maps.Map(mapDiv, {
-        	center: new google.maps.LatLng(37.4419, -122.1419),
-	        zoom: 13,
-    	    mapTypeId: google.maps.MapTypeId.ROADMAP,
-        	navigationControl: true,
-	        navigationControlOptions: {
-    	        style: google.maps.NavigationControlStyle.SMALL
-        	}
-    	});
-	
+    
+    var feedDiv = document.getElementById('twitter-feed'),
+        el;
+
+    for (var i = 0, n = feed.length; i < n; i += 1) {
+        el = document.createElement('p');
+        el.innerHTML = feed[i].text;
+        feedDiv.appendChild(el);
+    }
+    
+
+    //Google maps is available and all components are ready to use.
+
+    var mapDiv = document.getElementById('map-canvas');
+
+    var map = new google.maps.Map(mapDiv, {
+        center: new google.maps.LatLng(37.4419, -122.1419),
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        navigationControl: true,
+        navigationControlOptions: {
+            style: google.maps.NavigationControlStyle.SMALL
+        }
+    });
+
 });
 
 // I had to load twitter via a separate require() otherwise it wouldn't load
 
-require(['async!http://twitter.com/statuses/user_timeline/Integralist.json?callback'], function(feed) {
-	console.log('feed: ', feed);
+require(['async!http://twitter.com/statuses/user_timeline/Integralist.json'], function(feed) {
+	console.log('twitter feed: ', feed);
 });
-
-// Try not using async! plugin (apparently should work according to RequireJs API)
-/*
-require(['http://twitter.com/statuses/user_timeline/Integralist.json?callback=define'], function(feed) {
-	console.log('feed (non-plugin): ', feed);
-});
-*/

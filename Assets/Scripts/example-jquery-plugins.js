@@ -13,8 +13,9 @@ require.config({
 	and a function which will be executed when those dependencies are resolved. 
 	However this code is not stored as a named module, as its purpose is to be run immediately.
 */
-require(['Utils/jquery.carousel'], function(){
+require(['Utils/jquery.carousel', 'Utils/jquery.slimbox'], function(){
 	
+	// No need to require() jquery because the plugin has defined jquery as a dependancy
 	$('#carousel').jCarouselLite({
 		auto: 2000, // move every two seconds
 		speed: 1000, // complete the animation in one second

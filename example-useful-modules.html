@@ -1,0 +1,147 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Require Js + Useful Modules</title>
+	<style type="text/css" media="screen">
+		body {
+			font: 300 13px helvetica neue;
+		}
+		
+		button {
+			padding: 7px;
+			width: 50px;
+			cursor: pointer;
+		}
+		
+		h1,h2 {
+			font-weight: 300;
+			margin: 0;
+			padding: 0;
+		}
+		
+		h1 {
+			font-size: 36px;
+		}
+		
+		.container {
+			margin: 3em auto;
+			width: 550px;
+		}
+		
+		#morpheus {
+			margin-bottom: -3em;
+		}
+		
+		.stage {
+			padding: 50px;
+			background: #eee;
+			border-radius: 10px;
+			border: 1px solid #bbb;
+			margin: 15px 0;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.box {
+			top: 0;
+			left: 0;
+			position: relative;
+			width: 20px;
+			height: 20px;
+			border-radius: 4px;
+			background: #f00;
+			margin: 5px 0;
+			border: 1px solid #999;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+		}
+		
+		#last {
+			margin-bottom: 100px;
+		}
+		
+		#logo {
+			display: block;
+			margin: 1em auto;
+		}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h1>Examples</h1>
+		<ul>
+			<li><a href="#morpheus">Morpheus.js</a></li>
+			<li><a href="#when">When.js</a></li>
+			<li><a href="#pubsubz">Pubsubz.js</a></li>
+		</ul>
+	</div>
+	
+	<hr>
+	
+	<div class="container" id="morpheus">
+		<h1>Morpheus.js Examples</h1>
+		
+		<div class="stage">
+			<h2>General</h2>
+			<div id="ex1" class="box"></div>
+			<button id="go-ex1">Go</button>
+		</div>
+		
+		<div class="stage">
+			<h2>Color</h2>
+			<div id="ex3" class="box"></div>
+			<button id="go-ex3">Go</button>
+		</div>
+		
+		<div class="stage">
+			<h2>Motion + Color</h2>
+			<div id="ex2" class="box"></div>
+			<button id="go-ex2">Go</button>
+		</div>
+		
+		<div class="stage">
+			<h2>Alternative units</h2>
+			<div id="ex4" style="font-size: 1.2em;left: 200px;position: absolute;">hello world</div>
+			<button id="go-ex4">Go</button>
+		</div>
+		
+		<div class="stage">
+			<h2>Bezier Curves</h2>
+			<div id="ex5" class="box"></div>
+			<button id="go-ex5">Go</button>
+		</div>
+		
+		<div class="stage">
+			<h2>Multiple elements</h2>
+			<div id="ex6">
+				<div data-to="#0f0" class="box"></div>
+				<div data-to="#00c" class="box"></div>
+			</div>
+			<button id="go-ex6">Go</button>
+		</div>
+		
+		<div class="stage" id="last">
+			<h2>stopping animations</h2>
+			<div style="width:100px;height:100px;" id="ex7" class="box"></div>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<div class="container" id="when">
+		<h1>When.js Examples</h1>
+		<p>For details of this example please see the javascript code&hellip;</p>
+		<p>More API details can be found here: <a href="https://github.com/briancavalier/when.js/wiki/Examples">https://github.com/briancavalier/when.js/wiki/Examples</a></p>
+	</div>
+	
+	<hr>
+	
+	<div class="container" id="pubsubz">
+		<h1>Pubsubz.js Examples</h1>
+		<p>For details of this example please see the javascript code&hellip;</p>
+	</div>
+	
+	<script data-main="Assets/Scripts/example-useful-modules" src="Assets/Scripts/Require.min.js"></script>
+</body>
+</html>

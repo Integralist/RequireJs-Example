@@ -16,6 +16,7 @@ require.config({
 require(['Utils/jquery.carousel', 'Utils/jquery.slimbox'], function(){
 	
 	// No need to require() jquery because the plugin has defined jquery as a dependancy
+	// But we could require it if we wanted as a standard practice (to be clear to other users?)
 	$('#carousel').jCarouselLite({
 		auto: 2000, // move every two seconds
 		speed: 1000, // complete the animation in one second

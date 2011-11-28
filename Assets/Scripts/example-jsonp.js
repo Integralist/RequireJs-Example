@@ -15,3 +15,8 @@ require(['jsonp!http://twitter.com/statuses/user_timeline/Integralist.json?callb
 require(['jsonp!JSON-P.php?callback=rjs_global'], function(feed4) {
 	console.log('feed4: ', feed4);
 });
+
+// Works with plain .json data too!
+require(['jsonp!http://twitter.com/statuses/user_timeline/Integralist.json'], function(feed5) {
+	console.log('feed5: ', feed5);
+});

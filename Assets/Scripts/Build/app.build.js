@@ -10,17 +10,29 @@
  * You can include/exclude specific modules though if needed
  *
  * You can also set optimize: "none" (or more specific uglifyjs settings) if you need to.
+ *
+ * Node: if you set relative paths then do them relative to the baseUrl
  */
-({
+({	
     appDir: '../../../',
     baseUrl: 'Assets/Scripts',
     dir: '../../../project-build',
-    // if you set relative paths then do them relative to the baseUrl
+    /*
+     * The below 'paths' object is useful for when using plugins/named module paths.
+     * If you use plugins or named modules in your code then don't forget to specify the same paths again in your build script.
+     * Otherwise your build script wont be able to find your plugins/named modules and will generate an error when building.
+     */
     paths: {
-        jquery: 'Utils/jquery',
         async: 'Plugins/async',
-        tpl: 'Plugins/tpl'
+        jsonp: 'Plugins/jsonp',
+        jquery: 'Utils/jquery',
+        morpheus: 'Utils/morpheus',
+		pubsubz: 'Utils/pubsubz',
+		sizzle: 'Utils/sizzle',
+        tpl: 'Plugins/tpl',
+		when: 'Utils/when'
     },
+    optimize: 'none',
     modules: [
         {
             name: 'main'
@@ -33,10 +45,22 @@
             name: 'example-async'
         },
         {
+            name: 'example-jquery-plugins'
+        },
+        {
+            name: 'example-jsonp'
+        },
+        {
             name: 'example-lazyload'
         },
         {
+            name: 'example-library-utilities'
+        },
+        {
             name: 'example-template'
+        },
+        {
+            name: 'example-useful-modules'
         }
     ]
 })

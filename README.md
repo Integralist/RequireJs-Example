@@ -7,6 +7,63 @@ Description
 Basic RequireJs Example with code comments to explain how everything works.
 See a post related to this repo: http://integralist.co.uk/post/11705798780/beginners-guide-to-amd-and-requirejs
 
+r.js and almond.js
+------------------
+
+If you're planning on just using RequireJs (even for when your site/app goes 'live') then running a `build script` will work fine…
+
+```js
+// FOR EXAMPLE…
+({	
+    appDir: '../../../',
+    baseUrl: 'Assets/Scripts',
+    dir: '../../../project-build',
+    paths: {
+        async: 'Plugins/async',
+        jsonp: 'Plugins/jsonp',
+        jquery: 'Utils/jquery',
+        morpheus: 'Utils/morpheus',
+		pubsubz: 'Utils/pubsubz',
+		sizzle: 'Utils/sizzle',
+        tpl: 'Plugins/tpl',
+		when: 'Utils/when'
+    },
+    optimize: 'none',
+    modules: [
+        {
+            name: 'main'
+        },
+        {
+            name: 'example-async'
+        },
+        {
+            name: 'example-jquery-plugins'
+        },
+        {
+            name: 'example-jsonp'
+        },
+        {
+            name: 'example-lazyload'
+        },
+        {
+            name: 'example-library-utilities'
+        },
+        {
+            name: 'example-template'
+        },
+        {
+            name: 'example-useful-modules'
+        }
+    ]
+})
+```
+
+…but if you want to swap out RequireJs for Almond (which is a much smaller footprint of an AMD loader, developed by @jrburke who also created RequireJs) then you can't (currently) use a build script for Almond, you need to run the terminal command for each script.
+
+See: [https://github.com/jrburke/almond/issues/3](https://github.com/jrburke/almond/issues/3) for more info.
+
+The command to run is (for example) `node r.js -o baseUrl=../ name=Almond.min.js include=main out=main-built.js wrap=true` - notice that the `baseUrl` is relative to where the `r.js` file is located (and so where you would be located in the Terminal when running the command). The `name` flag corresponds to the `baseUrl`.
+
 
 Update
 -----------

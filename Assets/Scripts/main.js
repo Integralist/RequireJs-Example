@@ -2,7 +2,7 @@
 // http://groups.google.com/group/requirejs/browse_thread/thread/e7532b7e3013bc62/1e5ca8a89b276de6?show_docid=1e5ca8a89b276de6
 require.config({ 
 	paths: { 
-		jquery: 'Utils/jquery' 
+		jquery: 'Utils/jquery'
 	} 
 }); 
   

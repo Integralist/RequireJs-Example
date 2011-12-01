@@ -4,7 +4,7 @@ require.config({
 		sizzle: 'Utils/sizzle',
 		when: 'Utils/when',
 		pubsubz: 'Utils/pubsubz'
-	} 
+	}
 });
 
 require(['morpheus', 'sizzle', 'when', 'pubsubz'], function(morpheus, find, when, ps) {

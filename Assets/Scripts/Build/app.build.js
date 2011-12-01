@@ -7,7 +7,7 @@
  * See: https://github.com/jrburke/r.js/blob/master/build/example.build.js for an example build script
  *
  * If you specify just the name (with no includes/excludes) then all modules are combined into the "main" file.
- * You can include/exclude specific modules though if needed
+ * You can include/exclude specific modules though if needed (this helps with 'lazy loading' scripts)
  *
  * You can also set optimize: "none" (or more specific uglifyjs settings) if you need to.
  *
@@ -37,8 +37,8 @@
         {
             name: 'main'
             /*
-            include: ["App/people"],
-            exclude: ["Utils/random"]
+            include: ['App/people'],
+            exclude: ['Utils/random']
             */
         },
         {
@@ -51,7 +51,8 @@
             name: 'example-jsonp'
         },
         {
-            name: 'example-lazyload'
+            name: 'example-lazyload',
+            exclude: ['Utils/random'] // this means this file wont be included as a module definition in example-lazyload.js (but will still be lazy-loaded)
         },
         {
             name: 'example-library-utilities'

@@ -4,20 +4,21 @@
 Description
 -----------
 
-Basic RequireJs Example with code comments to explain how everything works.
+RequireJs Examples/Plugins (with code comments to explain how everything works).
 See a post related to this repo: http://integralist.co.uk/post/11705798780/beginners-guide-to-amd-and-requirejs
 
-Update
+Items
 -----------
 
-Have started adding more examples (like plugins) to show how they work.
-
-* Async Plugin (helps with loading 3rd party services such as Google Maps and JSONP services - e.g. Twitter feed)
+* Async Plugin (helps with loading 3rd party services such as Google Maps and JSONP services - e.g. Twitter feed /by [@millermedeiros](https://github.com/millermedeiros/amd-utils))
 * JSONP (my own attempt at loading JSONP data)
-* Template Plugin (uses the same template engine as found in _underscore.js)
-* Lazy-Loading (although *not really* when you're deploy via a build script as all modules are concatenated into single script!)
+* Template Plugin (uses the same template engine as found in _underscore.js /by [@ZeeAgency](https://github.com/ZeeAgency/requirejs-tpl))
+* Lazy-Loading
 * jQuery Plugins (there are a couple of plugins that our company uses which I've ported over to support AMD)
-* Useful Modules (an example of utilising common modules such as when.js / morpheus.js / pubsubz.js etc)
+* Useful Modules (an example of utilising common modules such as [when.js](https://github.com/briancavalier/when.js) /by [@briancavalier](https://github.com/briancavalier), [morpheus.js](https://github.com/ded/morpheus)*** /by [@ded](https://github.com/ded), [pubsubz.js](https://github.com/addyosmani/pubsubz) /by [@addyosmani](https://github.com/addyosmani))
+* Library utilities (I took most of my methods from [Stand.ard.iz.er](https://github.com/Integralist/Stand.ard.iz.er) and moved them to AMD format + improved the API slightly)
+
+***note that to get Morpheus to work in my AMD module after running a build script I had to swap out their define() method for another. See: https://github.com/ded/morpheus/issues/19
 
 Build Script (also: r.js and almond.js)
 ---------------------------------------

@@ -17,6 +17,7 @@ Items
 * jQuery Plugins (there are a couple of plugins that our company uses which I've ported over to support AMD)
 * Useful Modules (an example of utilising common modules such as [when.js](https://github.com/briancavalier/when.js) /by [@briancavalier](https://github.com/briancavalier), [morpheus.js](https://github.com/ded/morpheus)*** /by [@ded](https://github.com/ded), [pubsubz.js](https://github.com/addyosmani/pubsubz) /by [@addyosmani](https://github.com/addyosmani))
 * Library utilities (I took most of my methods from [Stand.ard.iz.er](https://github.com/Integralist/Stand.ard.iz.er) and moved them to AMD format + improved the API slightly)
+* Loading GoogleMap using Deferred/Promises API example from [@pavanpodila](http://twitter.com/pavanpodila)
 
 ***note that to get Morpheus to work in my AMD module after running a build script I had to swap out their define() method for another. See: https://github.com/ded/morpheus/issues/19
 

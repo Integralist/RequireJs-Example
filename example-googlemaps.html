@@ -1,0 +1,64 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Require Js</title>
+	<style type="text/css">
+		html, body {
+            margin: 10px;
+            padding: 0px;
+            font-family: Georgia;
+        }
+
+        #header {
+            border: 1px solid red;
+            
+            background-image: -webkit-linear-gradient(top, white, #c77);
+            background-image: linear-gradient(top, white, #c77);
+            background-image: -moz-linear-gradient(top, white, #c77);
+            background-image: -ms-linear-gradient(top, white, #c77);
+
+            padding: 5px;
+            width: 490px;
+            font-size: 1.3em;
+            color: #333;
+            text-shadow: 1px 1px #ccc;
+
+            margin-bottom: 10px;
+        }
+        #header div:nth-child(2) { font-family: courier; font-size: 1em; }
+        #header div:nth-child(3) { font-size: 0.75em; margin-top: 5px; }
+
+        #map-canvas {
+            width: 500px;
+            height: 600px;
+
+            border: 1px solid #999;
+            box-shadow: 2px 2px 4px #ccc;
+        }
+
+        #search-box {
+            color: #0BF;
+            text-shadow: 1px 1px #aaa;
+            width: 300px;
+            height: 30px;
+            font-size: 1.5em;
+        }
+	</style>
+</head>
+<body>
+	<h1>RequireJS Loading GoogleMaps using (jQuery's) Deferred/Promises API</h1>
+	<div id="header">
+	    <div id="note">Note: The maps API will load after 5 seconds, but you can search immediately.</div>
+	    <div>Example searches: "nyc", "ca", "tx"</div>
+	    <div>Tip: Refresh to try again</div>
+	</div>
+	<div style="position: relative;">
+	    <div id="map-canvas"></div>
+	    <div style="position: absolute; left: 100px; top: 30px;">
+	        <input id="search-box" type="text" placeholder="Search address">
+	    </div>	
+	</div>
+	<script data-main="Assets/Scripts/example-googlemaps" src="Assets/Scripts/Require.min.js"></script>
+</body>
+</html>

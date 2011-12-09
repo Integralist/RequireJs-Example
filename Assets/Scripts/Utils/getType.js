@@ -1,7 +1,5 @@
 define(function(){
 
-	var doc = document;
-	
 	/**
 	 * Following property stores a reference to the core Object's toString() method.
 	 * This allows us to access JavaScript's internal [[Class]] property which helps us determine the type of certain primitives.

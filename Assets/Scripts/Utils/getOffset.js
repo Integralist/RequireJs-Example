@@ -1,7 +1,5 @@
 define(function(){
 
-	var doc = document;
-	
 	/**
 	 * Following method determines the left/top position of the target element.
 	 * This is so we can more accurately position specific elements.

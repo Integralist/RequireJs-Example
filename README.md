@@ -18,6 +18,7 @@ Items
 * Useful Modules (an example of utilising common modules such as [when.js](https://github.com/briancavalier/when.js) /by [@briancavalier](https://github.com/briancavalier), [morpheus.js](https://github.com/ded/morpheus)*** /by [@ded](https://github.com/ded), [pubsubz.js](https://github.com/addyosmani/pubsubz) /by [@addyosmani](https://github.com/addyosmani))
 * Library utilities (I took most of my methods from [Stand.ard.iz.er](https://github.com/Integralist/Stand.ard.iz.er) and moved them to AMD format + improved the API slightly)
 * Loading GoogleMap using Deferred/Promises API example from [@pavanpodila](http://twitter.com/pavanpodila)
+* Unit Tests (yes I've finally gotten around to writing Unit Tests! not for everything mind you, but it's a start - I'm using [Jasmine](https://github.com/pivotal/jasmine) as my testing framework)
 
 ***note that to get Morpheus to work in my AMD module after running a build script I had to swap out their define() method for another. See: https://github.com/ded/morpheus/issues/19
 

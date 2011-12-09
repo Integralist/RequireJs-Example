@@ -55,6 +55,8 @@ require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/ajax', 
 	console.log('get.tag', get.tag({ tag:'h2' }));
 	console.log('get.tag/first', get.tag({ tag:'h2', first:true }));
 	console.log('get.docheight', get.docheight());
+	console.log('get.offset', get.offset(h2));
+	console.log('get.type', get.type(['a', 'b', 'c']));
 	
 	// Dictionary
 	var colourMap = {

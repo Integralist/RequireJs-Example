@@ -37,10 +37,19 @@ define(['Utils/getType', 'Utils/get'], function(getType, get){
 		// Spec
 		it('should return all h2 elements as an NodeList', function() {
 			
-			// Can't check if the returned value is an Array as it's actually a NodeList.
-			// Also can't check against the string NodeList because in IE it returns Object instead.
-			// So the best we can do is check if it's not undefined. 
+			// Can't just check if the returned value is an Array as it's actually a NodeList (which is similar but missing all Array methods).
+			// We also can't check against the string NodeList because in IE it returns Object instead.
+			// We also can't check if (element instanceof NodeList) as that just returns undefined in IE6/7.
+			
+			// So one extremely basic option would be to check if the return value is not 'undefined'.
 			expect(get.tag({ tag:'h2' })).toBeDefined();
+			
+			// A slightly better option is to use duck-typing (where you check available properties/methods)
+			// Specification: http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-536297177
+			expect(/HTMLCollection|NodeList\(\)|Object\(\)/i.test(get.tag({ tag:'h2' }).constructor.toString())).toBeTruthy();	// NodeList Constructor changes across browsers (WebKit = NodeList(), Firefox = Object(), IE = [object HTMLCollection])
+			expect(get.tag({ tag:'h2' }).length).toBeNumber();																	// NodeList should have 'length' property
+			expect(get.tag({ tag:'h2' }).item).toBeDefined(); 																	// NodeList should have 'item' method defined (Array doesn't have this). IE returns 'object', other browsers return 'function' so we just check that it's defined
+			expect(get.tag({ tag:'h2' }).slice).toBeUndefined(); 																// NodeList doesn't have Array method .slice()
 			
 		});
 		

@@ -1,36 +1,35 @@
 define(function(){
 	
-	function loadScript(url, callback) {
+	var DEFAULT_PARAM_NAME = 'callback',
+        _uid = 0;
+	
+	function loadScript(url) {
 		var d = document,
 			b = d.body,
-			callback = (typeof callback !== "undefined") ? callback : function(){},
+			s = d.getElementsByTagName('script')[0], // first script tag found in page (there will ALWAYS be a script tag in the page - otherwise this script wouldn't have run!)
 			script = d.createElement("script");
 			script.type = "text/javascript";
 	
-		if (script.readyState) { // Internet Explorer
-			script.onreadystatechange = function() {
-				if (script.readyState == "loaded" || script.readyState == "complete") {
-					/*
-					 * Oddly the final readyState isn’t always "complete". 
-					 * Sometimes, readyState stops at "loaded" without going on to "complete" 
-					 * and sometimes it skips over "loaded" altogether. 
-					 * 
-					 * The best approach is to check for both readyState values 
-					 * and remove the event handler in both cases to ensure you don’t handle the loading twice:
-					 */
-					script.onreadystatechange = null;
-					callback(true);
-				}
-			};
-		} else {
-			script.onload = function() {
-				callback(true);
-			};
-		}
-	
 		script.src = url;
-		b.insertBefore(script, b.firstChild); // can be a problem if the BODY doesn't exist
+		s.parentNode.insertBefore(script, s);
 	}
+	
+	// This works around issue with some services where they use a different 'default' callback
+	// e.g. flickr uses 'jsoncallback' rather than 'callback' (most services use 'callback' as standard)
+	function formatUrl(name, id){
+        var paramRegex = /!(.+)/,
+            url = name.replace(paramRegex, ''),
+            param = (paramRegex.test(name))? name.replace(/.+!/, '') : DEFAULT_PARAM_NAME;
+        url += (url.indexOf('?') < 0)? '?' : '&';
+        return url + param +'='+ id;
+    }
+
+	// We need to store each of the RequireJs 'load' callbacks for multiple resources in global variables (bad I know, but essential in this scenario)
+	// So the global vars need to be unique so this function does just that.
+    function uid() {
+        _uid += 1;
+        return '__jsonp_'+ _uid +'__';
+    }
 	
 	return {
 		/**
@@ -54,17 +53,10 @@ define(function(){
 			if (config.isBuild) {
 				load(null);
 			} else {
-				// Create global variable for jsonp service to execute
-		        window['rjs_global'] = function(data) {
-		            // Create global variable to store returned data
-		            window['rjs_jsonp'] = data;
-		        };
-	        
-				loadScript(resource, function(loaded){
-					if (loaded && ('rjs_jsonp' in window)) {
-						load(window['rjs_jsonp']);
-					}
-				});
+				var id = uid(); // Generate unique id value
+                window[id] = load; // Create a unique global variable that stores the 'load' callback function ('load' executes once the current resource is loaded)
+                console.log('formatUrl(resource, id)', formatUrl(resource, id));
+                loadScript(formatUrl(resource, id)); // Insert the script into the page (but notice the url is now formatted so the callback method is consistent with it's relevant API) and the callback executes the unique global var that holds its associated 'load' function
 			}
 		}
 	};

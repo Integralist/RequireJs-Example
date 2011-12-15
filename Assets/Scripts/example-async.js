@@ -50,3 +50,9 @@ require(['async!http://twitter.com/statuses/user_timeline/millermedeiros.json', 
 require(['async!http://twitter.com/statuses/user_timeline/Integralist.json'], function(feed) {
 	console.log('twitter feed: ', feed);
 });
+
+// This originally failed (see ticket https://github.com/millermedeiros/requirejs-plugins/issues/7)
+// Fix was to add !jsoncallback to the end instead of what Flickr suggested which was nojsoncallback=1
+require(['async!http://api.flickr.com/services/feeds/photos_public.gne?id=49297289@N08&lang=en-us&format=json!jsoncallback'], function(feed){
+	console.log('Flickr', feed);
+});

@@ -1,9 +1,15 @@
-require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/insertAfter', 'Utils/get', 'Utils/Dictionary', 'Utils/css'], function(es, truncate, isIE, ajax, events, toCamelCase, toHyphens, insertAfter, get, Dictionary, css) {
+require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/insertAfter', 'Utils/get', 'Utils/Dictionary', 'Utils/css'], function(es, truncate, isIE, isHost, ajax, events, toCamelCase, toHyphens, insertAfter, get, Dictionary, css) {
 	
 	console.log('prevElementSibling', es.prevElementSibling(document.body));
 	console.log('nextElementSibling', es.nextElementSibling(document.getElementsByTagName('head')[0]));	
 	console.log('truncate', truncate('my very long string that probably should be truncated'));
 	console.log('isIE', isIE);
+	console.log('isHost.method(document, \'appendChild\')', isHost.method(document, 'appendChild'));
+	console.log('isHost.method(document, \'attachEvent\')', isHost.method(document, 'attachEvent'));
+	console.log('isHost.collection(document.getElementsByTagName(\'h2\'), \'item\')', isHost.collection(document.getElementsByTagName('h2'), 'item'));
+	console.log('isHost.collection(document.getElementsByTagName(\'h2\'), \'namedItem\')', isHost.collection(document.getElementsByTagName('h2'), 'namedItem'));
+	console.log('isHost.object(document, \'appendChild\')', isHost.object(document, 'appendChild'), '…false; because this is a method NOT an object/property');
+	console.log('isHost.object(document, \'body\')', isHost.object(document, 'body'));
 	
 	ajax({
 		url: 'JSON.php',

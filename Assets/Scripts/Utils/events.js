@@ -49,7 +49,9 @@ define(['require', 'Utils/isHostMethod'], function(require, isHostMethod){
 								// true && false ==> false (expression2)
 								// 
 								// So the below equates to:
-								//
+								// (typeof window != "undefined" && window) returns window - as the first expression equates to true
+								// (typeof window.event != "undefined" && window.event) returns window.event - as the first expression equates to true
+								// (window && window.event) which itself returns window.event - as the first expression equates to true								
 								e = ((typeof window != "undefined" && window) && (typeof window.event != "undefined" && window.event));
 							}
 							

@@ -2,8 +2,7 @@ define(function(){
 
 	/*
 	 * Feature Testing a Host Object
-	 * Because a callable host object can legitimately have any tyepof result, 
-	 * the above code could produce false negatives.
+	 * Because a callable host object can legitimately have any tyepof result then it can't be relied upon.
 	 *
 	 * 
 	 * @reference: http://michaux.ca/articles/feature-detection-state-of-the-art-browser-scripting

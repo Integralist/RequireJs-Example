@@ -1,4 +1,4 @@
-define(['Utils/getType', 'Utils/get'], function(getType, get){
+define(['Utils/getType', 'Utils/get', 'Utils/isIE'], function(getType, get, isIE){
 
 	// Test Suite
 	describe('Get methods tests', function() {
@@ -46,10 +46,32 @@ define(['Utils/getType', 'Utils/get'], function(getType, get){
 			
 			// A slightly better option is to use duck-typing (where you check available properties/methods)
 			// Specification: http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-536297177
-			expect(/HTMLCollection|NodeList\(\)|Object\(\)/i.test(get.tag({ tag:'h2' }).constructor.toString())).toBeTruthy();	// NodeList Constructor changes across browsers (WebKit = NodeList(), Firefox = Object(), IE = [object HTMLCollection])
-			expect(get.tag({ tag:'h2' }).length).toBeNumber();																	// NodeList should have 'length' property
-			expect(get.tag({ tag:'h2' }).item).toBeDefined(); 																	// NodeList should have 'item' method defined (Array doesn't have this). IE returns 'object', other browsers return 'function' so we just check that it's defined
-			expect(get.tag({ tag:'h2' }).slice).toBeUndefined(); 																// NodeList doesn't have Array method .slice()
+			/*
+			 * Safari
+			 * [object NodeListConstructor]
+			 * 
+			 * Chrome
+			 * function NodeList() { [native code] }
+			 *
+			 * Opera
+			 * [object NodeList]
+			 *
+			 * Firefox
+			 * function Object() { [native code] }
+			 *
+			 * IE9/8
+			 * [object HTMLCollection]
+			 *
+			 * IE7
+			 * TypeError: Unable to get value of the property 'toString': object is null or undefined
+			 * So had to ignore the test for IE7
+			 */
+			if (isIE > 7) {
+				expect(/NodeListConstructor|HTMLCollection|NodeList|Object\(\)/i.test(get.tag({ tag:'h2' }).constructor.toString())).toBeTruthy();	// NodeList Constructor changes across browsers (WebKit = NodeList(), Firefox = Object(), IE = [object HTMLCollection])
+			}
+			expect(get.tag({ tag:'h2' }).length).toBeNumber();		// NodeList should have 'length' property
+			expect(get.tag({ tag:'h2' }).item).toBeDefined(); 		// NodeList should have 'item' method defined (Array doesn't have this). IE returns 'object', other browsers return 'function' so we just check that it's defined
+			expect(get.tag({ tag:'h2' }).slice).toBeUndefined(); 	// NodeList doesn't have Array method .slice()
 			
 		});
 		

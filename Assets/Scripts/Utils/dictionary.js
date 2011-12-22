@@ -1,4 +1,4 @@
-define(function(){
+define(['Utils/getType'], function(getType){
 
 	/**
 	 * The following method is a Constructor with additional methods attached to the prototype
@@ -8,8 +8,8 @@ define(function(){
 	 * Lastly, as it's a constructor we'll use the correct naming convention of using a capitalised first letter.
 	 *
 	 * @notes for the prototype object see near bottom of script (after this __standardizer object definition has ended).
-	 * @param {} x
-	 * @return {} x
+	 * @param startValues { Object } existing object of properties to extend 
+	 * @return {} new Dictionary instance
 	 */
 	var Dictionary = function(startValues) {
 		this.values = startValues || {};
@@ -18,7 +18,7 @@ define(function(){
 	Dictionary.prototype = {
 		
 		/**
-		 * The following method stores a new property and associated value
+		 * The following method stores a new property and associated value.
 		 * 
 		 * @param name { String } the property name to create
 		 * @param value { Value } the value to store under the specified property name

@@ -37,13 +37,23 @@ require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/isHost'
 	});
 	
 	// Event Handling
-	function handler(e) {
-		console.log('events', e);
-		events.remove(header, 'click', handler);
+	function headerHandler(e) {
+		console.log('headerHandler');
+		events.remove(header, 'click', headerHandler);
+	}
+	function linkHandler(e) {
+		console.log('type: ', e.type);
+		console.log('target: ', e.target, e.target.style.border='1px solid red'); // element which triggered the event
+		console.log('relatedTarget: ', e.relatedTarget); // undefined unless a mouse over/out event
+		console.log('stopPropagation: ', e.stopPropagation()); // prevents click event on containing <h1> to be triggered
+		console.log('preventDefault: ', e.preventDefault()); // prevents the <a> from directing to specified href
+		events.remove(link, 'click', linkHandler);
 	}	
-	var header = document.getElementsByTagName('h1')[0];
-	header.style.cursor = 'pointer';	
-	events.add(header, 'click', handler);	
+	var header = document.getElementsByTagName('h1')[0],
+		link = header.getElementsByTagName('a')[0];
+	header.style.cursor = 'pointer';
+	events.add(header, 'click', headerHandler);
+	events.add(link, 'click', linkHandler);	
 	
 	// toCamelCase and toHyphens
 	console.log('toCamelCase', toCamelCase('this-is-my-hyphenated-string'));

@@ -1,4 +1,4 @@
-require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/insertAfter', 'Utils/get', 'Utils/Dictionary', 'Utils/css'], function(es, truncate, isIE, isHost, ajax, events, toCamelCase, toHyphens, insertAfter, get, Dictionary, css) {
+require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/insertAfter', 'Utils/get', 'Utils/Dictionary', 'Utils/css', 'Utils/dom'], function(es, truncate, isIE, isHost, ajax, events, toCamelCase, toHyphens, insertAfter, get, Dictionary, css, dom) {
 	
 	console.log('prevElementSibling', es.prevElementSibling(document.body));
 	console.log('nextElementSibling', es.nextElementSibling(document.getElementsByTagName('head')[0]));	
@@ -73,6 +73,18 @@ require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/isHost'
 	console.log('get.docheight', get.docheight());
 	console.log('get.offset', get.offset(h2));
 	console.log('get.type', get.type(['a', 'b', 'c']));
+	
+	// DOM
+	var para = get.el('para'),
+		iah = get.el('iah');
+	console.log(para);
+	console.log(iah);
+	para.outerHTML = '<div>This div replaced a paragraph via outerHTML (innerHTML would have added this div INSIDE of the element it was called on, where outerHTML works on the actual element rather than adding inside of it)</div>';
+	iah.insertAdjacentHTML('beforebegin', '<strong style="color:red;">beforebegin (this is outside the p tag)</strong>');
+	iah.insertAdjacentHTML('afterbegin', '<strong style="color:red;">afterbegin (this is inside the p tag)</strong>');
+	iah.insertAdjacentHTML('beforeend', '<strong style="color:red;">beforeend (this is inside the p tag)</strong>');
+	iah.insertAdjacentHTML('afterend', '<strong style="color:red;">afterend (this is outside the p tag)</strong>');
+	// <!-- beforebegin --><p><!-- afterbegin -->foo<!-- beforeend --></p><!-- afterend -->
 	
 	// Dictionary
 	var colourMap = {

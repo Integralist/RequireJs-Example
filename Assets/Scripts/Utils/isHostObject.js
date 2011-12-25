@@ -9,7 +9,7 @@ define(function(){
 	 */
 
 	function isHostObject(object, property) {
-		return !!(typeof(object[property]) == "object" && object[property]);
+		return !!(typeof(object[property]) == 'object' && object[property]);
 	}
 
 	return isHostObject;

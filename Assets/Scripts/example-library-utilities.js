@@ -1,7 +1,5 @@
-require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/insertAfter', 'Utils/get', 'Utils/Dictionary', 'Utils/css', 'Utils/dom'], function(es, truncate, isIE, isHost, ajax, events, toCamelCase, toHyphens, insertAfter, get, Dictionary, css, dom) {
+require(['Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/insertAfter', 'Utils/get', 'Utils/Dictionary', 'Utils/css', 'Utils/dom'], function(truncate, isIE, isHost, ajax, events, toCamelCase, toHyphens, insertAfter, get, Dictionary, css, dom) {
 	
-	console.log('prevElementSibling', es.prevElementSibling(document.body));
-	console.log('nextElementSibling', es.nextElementSibling(document.getElementsByTagName('head')[0]));	
 	console.log('truncate', truncate('my very long string that probably should be truncated'));
 	console.log('isIE', isIE);
 	console.log('isHost.method(document, \'appendChild\')', isHost.method(document, 'appendChild'));
@@ -84,6 +82,8 @@ require(['Utils/elementSiblings', 'Utils/truncate', 'Utils/isIE', 'Utils/isHost'
 	iah.insertAdjacentHTML('afterbegin', '<strong style="color:red;">afterbegin (this is inside the p tag)</strong>');
 	iah.insertAdjacentHTML('beforeend', '<strong style="color:red;">beforeend (this is inside the p tag)</strong>');
 	iah.insertAdjacentHTML('afterend', '<strong style="color:red;">afterend (this is outside the p tag)</strong>');
+	console.log('prevElementSibling', dom.elementSiblings.prevElementSibling(document.body));
+	console.log('nextElementSibling', dom.elementSiblings.nextElementSibling(document.getElementsByTagName('head')[0]));
 	// <!-- beforebegin --><p><!-- afterbegin -->foo<!-- beforeend --></p><!-- afterend -->
 	
 	// Dictionary

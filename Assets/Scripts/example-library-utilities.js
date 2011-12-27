@@ -1,4 +1,4 @@
-require(['Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/insertAfter', 'Utils/get', 'Utils/Dictionary', 'Utils/css', 'Utils/dom'], function(truncate, isIE, isHost, ajax, events, toCamelCase, toHyphens, insertAfter, get, Dictionary, css, dom) {
+require(['Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/events', 'Utils/toCamelCase', 'Utils/toHyphens', 'Utils/get', 'Utils/Dictionary', 'Utils/css', 'Utils/dom'], function(truncate, isIE, isHost, ajax, events, toCamelCase, toHyphens, get, Dictionary, css, dom) {
 	
 	console.log('truncate', truncate('my very long string that probably should be truncated'));
 	console.log('isIE', isIE);
@@ -57,13 +57,6 @@ require(['Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/ev
 	console.log('toCamelCase', toCamelCase('this-is-my-hyphenated-string'));
 	console.log('toHyphens', toHyphens('thisIsMyCamelCaseString'));
 	
-	// insertAfter
-	var h2 = document.createElement('h2'),
-		h2txt = document.createTextNode('insertAfter test');	
-	h2.appendChild(h2txt);
-	h2.className = 'class-a class-b class-c'
-	insertAfter(h2, header);
-	
 	// get methods
 	console.log('get.el', get.el('mytest'));
 	console.log('get.tag', get.tag({ tag:'h2' }));
@@ -82,9 +75,15 @@ require(['Utils/truncate', 'Utils/isIE', 'Utils/isHost', 'Utils/ajax', 'Utils/ev
 	iah.insertAdjacentHTML('afterbegin', '<strong style="color:red;">afterbegin (this is inside the p tag)</strong>');
 	iah.insertAdjacentHTML('beforeend', '<strong style="color:red;">beforeend (this is inside the p tag)</strong>');
 	iah.insertAdjacentHTML('afterend', '<strong style="color:red;">afterend (this is outside the p tag)</strong>');
+	// <!-- beforebegin --><p><!-- afterbegin -->foo<!-- beforeend --></p><!-- afterend -->
 	console.log('prevElementSibling', dom.elementSiblings.prevElementSibling(document.body));
 	console.log('nextElementSibling', dom.elementSiblings.nextElementSibling(document.getElementsByTagName('head')[0]));
-	// <!-- beforebegin --><p><!-- afterbegin -->foo<!-- beforeend --></p><!-- afterend -->
+	// insertAfter
+	var h2 = document.createElement('h2'),
+		h2txt = document.createTextNode('insertAfter test');	
+	h2.appendChild(h2txt);
+	h2.className = 'class-a class-b class-c'
+	dom.insertAfter(h2, header);
 	
 	// Dictionary
 	var colourMap = {

@@ -2,7 +2,7 @@ define(function(){
 
 	/*
 	 * Feature Testing a Host Method
-	 * Because a callable host object can legitimately have any tyepof result then it can't be relied upon.
+	 * Because a callable host object can legitimately have any typeof result then it can't be relied upon.
 	 *
 	 * @notes:
 	 * The reason for the && !!object[property] is because in ECMAScript version 3, 

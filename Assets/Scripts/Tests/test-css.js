@@ -1,4 +1,4 @@
-define(['Utils/css'], function(css){
+define(['Utils/getArrayOfClassNames', 'Utils/addClass', 'Utils/hasClass', 'Utils/removeClass'], function(classes, add, has, remove){
 
 	// Test Suite
 	describe('CSS tests', function() {
@@ -13,15 +13,15 @@ define(['Utils/css'], function(css){
 		// Spec
 		it('should return an Array of class names', function() {			
 			
-			expect(css.classes(h2)).toEqual(['myclassa', 'myclassb']);
-			expect(css.classes(h2).length).toBe(2);
+			expect(classes(h2)).toEqual(['myclassa', 'myclassb']);
+			expect(classes(h2).length).toBe(2);
 			
 		});
 		
 		// Spec
 		it('should add class to element', function() {			
 			
-			css.add(h2, 'newclass');
+			add(h2, 'newclass');
 			expect(h2.className).toBe('myclassa myclassb newclass');
 			
 		});
@@ -29,15 +29,15 @@ define(['Utils/css'], function(css){
 		// Spec
 		it('should return a boolean for whether the class is on the given element', function() {			
 			
-			expect(css.has(h2, 'myclassa')).toBeTruthy();
-			expect(css.has(h2, 'newclass')).toBeFalsy();
+			expect(has(h2, 'myclassa')).toBeTruthy();
+			expect(has(h2, 'newclass')).toBeFalsy();
 			
 		});
 		
 		// Spec
 		it('should remove class from element', function() {			
 			
-			css.remove(h2, 'myclassb');
+			remove(h2, 'myclassb');
 			expect(h2.className).toBe('myclassa');
 			
 		});

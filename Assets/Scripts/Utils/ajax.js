@@ -54,7 +54,7 @@ define(['Utils/isIE', 'Utils/json'], function(isIE, JSON){
  		// Load the config object with defaults, if no values were provided by the user
 		config = {
 			// The type of HTTP Request
-			method: settings.method || 'POST',
+			method: settings.method || 'GET',
 			
 			// The data to POST to the server
 			data: settings.data || '',
@@ -187,13 +187,13 @@ define(['Utils/isIE', 'Utils/json'], function(isIE, JSON){
 		};
 		
 		// Get if we should POST or GET...
-		if (config.data) {
+		if (config.data && config.method === 'POST') {
 			// Settings
 			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 			
 			// Establish the connection to the server
 			xhr.send(config.data);
-		} else {					
+		} else {
 			// Establish the connection to the server
 			xhr.send(null);
 		}
